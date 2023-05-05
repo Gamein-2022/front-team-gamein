@@ -1,0 +1,59 @@
+@import "./fonts.scss";
+
+// reset common styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: kalameh, gilroy !important;
+  direction: rtl;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Toastify {
+  z-index: 999999;
+  position: relative;
+}
+
+.Toastify__toast {
+  direction: rtl !important;
+  font-family: kalameh, gilroy !important;
+  text-align: center !important;
+}
+
+// change scrollbar default styles
+html {
+  --scrollbarBG: transparent;
+  --thumbBG: #555;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+}
+* {
+  scrollbar-width: 6px;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+*::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 4px;
+  border: 1px solid #000;
+}
