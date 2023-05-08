@@ -1,11 +1,11 @@
 import AxiosInstance from "./config";
 
 export const getUsers = () => {
-  return AxiosInstance.get("/dashboard/team-building/users");
+  return AxiosInstance.get("/dashboard/team/users");
 };
 
 export const sendOffer = (userId) => {
-  return AxiosInstance.post("/dashboard/team-building/team-offer", { userId });
+  return AxiosInstance.post("/dashboard/team/team-offer", { userId });
 };
 
 export const getTeamInfo = () => {
@@ -13,15 +13,15 @@ export const getTeamInfo = () => {
 };
 
 export const getMyOffers = () => {
-  return AxiosInstance.get("/dashboard/team-building/offers");
+  return AxiosInstance.get("/dashboard/team/offers");
 };
 
 export const getSentOffers = () => {
-  return AxiosInstance.get("/dashboard/team-building/sent-offers");
+  return AxiosInstance.get("/dashboard/team/sent-offers");
 };
 
 export const acceptOffer = (offerId) => {
-  return AxiosInstance.put("/dashboard/team-building/accept-offer", {
+  return AxiosInstance.put("/dashboard/team/accept-offer", {
     offerId,
   });
 };

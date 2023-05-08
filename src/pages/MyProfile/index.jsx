@@ -7,6 +7,8 @@ import "./style.scss";
 function MyProfile() {
   const [gender, setGender] = useState("");
   const [grade, setGrade] = useState("");
+  // useS
+
   return (
     <div className="my-profile">
       <div className="my-profile__title">مشاهده پروفایل</div>
