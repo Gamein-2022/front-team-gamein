@@ -1,0 +1,62 @@
+name: deploy front
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+
+
+
+#   check-code:
+#     runs-on: [self-hosted, linux]
+#     steps:
+#       - uses: actions/checkout@master
+#       - run: |
+#              export PATH=$PATH:/opt/sonar-scanner/bin/
+#              echo $PATH
+#              sonar-scanner \
+#               -Dsonar.projectKey=front-gamein-2022 \
+#               -Dsonar.sources=. \
+#               -Dsonar.host.url=http://192.168.0.202:9000 \
+#               -Dsonar.token=sqp_528a53971f596e815d5f323dca35b615485f77b4
+             
+             
+             
+  build-front:
+    runs-on: [app]
+    steps:
+      - uses: actions/checkout@master
+      - run: |
+              ls -la
+              docker login   -u daria -p 7HlUyiSD  https://registry.dariasystem.com
+              docker build -t registry.dariasystem.com/gamein/front-team:dev .
+              docker push registry.dariasystem.com/gamein/front-team:dev
+              
+  deploy-front:
+    needs: build-front
+    runs-on: [app]
+    steps:
+      - uses: actions/checkout@master
+      - run: |
+              ls -la
+              docker login   -u daria -p 7HlUyiSD  https://registry.dariasystem.com
+              docker pull registry.dariasystem.com/gamein/front-team:dev
+              docker rm -f front-team      
+              docker-compose up -d front-team
+              sleep 5
+              docker-compose ps
+              
+  deploy-front-1:
+    needs: build-front
+    runs-on: [app-1]
+    steps:
+      - uses: actions/checkout@master
+      - run: |
+              ls -la
+              docker login   -u daria -p 7HlUyiSD  https://registry.dariasystem.com
+              docker pull registry.dariasystem.com/gamein/front-team:dev
+              docker rm -f front-team-1      
+              docker compose up -d front-team-1
+              sleep 5
+              docker compose ps
