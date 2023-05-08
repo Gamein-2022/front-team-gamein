@@ -1,0 +1,24 @@
+version: "3.3"
+networks:
+   gamein:
+     external: true
+
+
+services:
+  front-team:
+    image: registry.dariasystem.com/gamein/front-team:dev
+    container_name: front-team
+    restart: always
+    ports:
+      - 3001:80
+    networks:
+      - gamein 
+      
+  front-team-1:
+    image: registry.dariasystem.com/gamein/front-team:dev
+    container_name: front-team-1
+    restart: always
+    ports:
+      - 3001:80
+    networks:
+      - gamein  
