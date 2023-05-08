@@ -130,25 +130,6 @@ function ForgetPassword() {
                   className="forget-password__input"
                   placeholder="کد ارسال شده"
                 />
-                <div
-                  className="forget-password__forget-password"
-                  onClick={() => setStep("forget-password")}
-                >
-                  تغییر ایمیل
-                </div>
-                <Button
-                  onClick={() => {
-                    setStep("new-password");
-                  }}
-                  type={"white"}
-                  className="forget-password__btn"
-                >
-                  تایید کد
-                </Button>
-              </>
-            )}
-            {step === "new-password" && (
-              <>
                 <input
                   type={"password"}
                   value={password}
@@ -163,6 +144,12 @@ function ForgetPassword() {
                   className="forget-password__input"
                   placeholder="تکرار رمز عبور جدید"
                 />
+                <div
+                  className="forget-password__forget-password"
+                  onClick={() => setStep("forget-password")}
+                >
+                  تغییر ایمیل
+                </div>
                 <Button
                   onClick={() => {}}
                   type={"white"}

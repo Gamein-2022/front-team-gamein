@@ -14,20 +14,22 @@ function TeamRequests() {
 
   return (
     <div className="team-requests">
-      <div>درخواست‌های هم‌تیمی شدن</div>
+      <div className="team-requests__title">درخواست‌های هم‌تیمی شدن</div>
+      <div>درخواست‌های دیگران</div>
       <div className="other-request">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div>
-          <CheckIcon />
-        </div>
-        <div>
-          <CloseIcon />
+        <div className="other-request__row">
+          <div className="other-request__column">ali heidari</div>
+          <div className="other-request__column">ali heidari</div>
+          <div className="other-request__column">ali heidari</div>
+          <div className="other-request__column">ali heidari</div>
+          <div className="other-request__check">
+            <CheckIcon />
+          </div>
+          <div className="other-request__close">
+            <CloseIcon />
+          </div>
         </div>
       </div>
-      <div>درخواست‌های دیگران</div>
       <div>درخواست‌های من (در انتظار تایید)</div>
     </div>
   );

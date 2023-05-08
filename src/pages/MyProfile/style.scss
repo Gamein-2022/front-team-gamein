@@ -1,6 +1,25 @@
 .my-profile {
   padding: 16px;
-  
+  height: 100%;
+  overflow-y: auto;
+
+  &__title {
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  &__complete {
+    color: #009054;
+    font-weight: 500;
+  }
+
+  &__not-complete {
+    color: #c72f21;
+    font-weight: 500;
+  }
+
   &__form {
     max-width: 480px;
     margin: auto;
