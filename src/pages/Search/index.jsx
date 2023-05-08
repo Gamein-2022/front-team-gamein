@@ -14,7 +14,7 @@ function Search() {
 
   return (
     <div className="search">
-      <div>جستجوی بازیکن‌ها</div>
+      <div className="search__title">جستجوی بازیکن‌ها</div>
       <Input label="جستجوی بازیکن" placeholder="جستجوی بازیکن" />
       <Button>جستجو</Button>
     </div>

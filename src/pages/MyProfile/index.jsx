@@ -18,6 +18,7 @@ function MyProfile() {
       <Button type="blue">ویرایش اطلاعات</Button>
       <Button>ثبت اطلاعات</Button>
       <div className="my-profile__form">
+        <Input label="نام کاربری" placeholder="نام کاربری" />
         <Input label="نام فارسی" placeholder="نام فارسی" />
         <Input label="نام خانوادگی فارسی" placeholder="نام خانوادگی فارسی" />
         <Input label="نام انگلیسی" placeholder="نام انگلیسی" />
