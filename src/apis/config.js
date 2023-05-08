@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AxiosInstance = axios.create({
-  baseURL: "http://api-gamein.dariahamrah.ir",
+  baseURL: "http://localhost",
   headers: {
     "Content-Type": "application/json",
   },
