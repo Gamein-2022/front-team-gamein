@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./style.scss";
 import { getUsers, sendOffer } from "../../apis/team-building";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 
 function Search() {
   const [users, setUsers] = useState([]);
@@ -11,23 +13,10 @@ function Search() {
   }, []);
 
   return (
-    <div>
-      {users.map((user) => (
-        <div>
-          <div>{user.name}</div>
-          <div>
-            <button
-              onClick={() => {
-                sendOffer(user.id).then((res) => {
-                  // debugger;
-                });
-              }}
-            >
-              Send Offer
-            </button>
-          </div>
-        </div>
-      ))}
+    <div className="search">
+      <div>جستجوی بازیکن‌ها</div>
+      <Input label="جستجوی بازیکن" placeholder="جستجوی بازیکن" />
+      <Button>جستجو</Button>
     </div>
   );
 }

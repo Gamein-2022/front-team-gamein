@@ -27,7 +27,7 @@ function MyProfile() {
       </div>
       <div>
         <Select
-          value={gender}
+          value={grade}
           onChange={(e) => setGrade(e.target.value)}
           placeholder="مقطع تحصیلی"
           displayEmpty
