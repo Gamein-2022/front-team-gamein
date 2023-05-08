@@ -23,7 +23,7 @@ function MyTeamInfo() {
 
   return (
     <div className="my-team-info">
-      <div>اطلاعات تیم من</div>
+      <div className="my-team-info__title">اطلاعات تیم من</div>
       <Input label="اسم تیم" />
       <div>
         <div>aliheidarime</div>
