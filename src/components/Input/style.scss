@@ -1,0 +1,42 @@
+.input__container {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px;
+  color: #333;
+  background-color: #f8f8f8;
+  margin-top: 8px;
+  border: 1px solid #dbdbdb;
+  outline: none;
+
+  &:focus {
+    border: 1.5px solid #34495e;
+  }
+
+  &::placeholder {
+    color: #aaa;
+  }
+}
+
+.input--disabled {
+  color: #888;
+}
+
+.input--error,
+.input--error:focus {
+  border: 1.5px solid #e74c3c;
+}
+
+.input__text--error {
+  color: #e74c3c;
+  margin: 8px 8px 0;
+  font-size: 0.8rem;
+}
+
+.input__label {
+  margin: 8px;
+}

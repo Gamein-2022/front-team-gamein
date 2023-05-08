@@ -3,7 +3,8 @@ import Helmet from "react-helmet";
 import gamein2022Img from "../../assets/gamein-2022.svg";
 import dariaLogoImg from "../../assets/daria-logo.png";
 import { useNavigate } from "react-router-dom";
-import { ClipLoader, ScaleLoader } from "react-spinners";
+import Button from "../../components/Button";
+import { ScaleLoader } from "react-spinners";
 
 import { login } from "../../apis/login";
 import { toast } from "react-toastify";
@@ -88,6 +89,7 @@ function Login() {
         <div className="login">
           <form className="login__form" onSubmit={handleSubmit} s>
             <img
+              onClick={() => navigate("/login")}
               className="login__logo"
               src={gamein2022Img}
               alt="gamein 2022"
@@ -105,9 +107,15 @@ function Login() {
               placeholder="کلمه عبور"
               type="password"
             />
-            <button className="login__btn">
-              {loading ? <ClipLoader size={24} color="#D63F26" /> : "ورود"}
-            </button>
+            <div
+              className="login__forget-password"
+              onClick={() => navigate("/forget-password")}
+            >
+              رمز عبور خود را فراموش کرده‌اید؟
+            </div>
+            <Button type={"white"} className="login__btn">
+              ورود
+            </Button>
             <a
               href="https://dariahamrah.ir/"
               target="_blank"

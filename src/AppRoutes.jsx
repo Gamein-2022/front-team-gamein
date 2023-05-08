@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 
 import Login from "./pages/Login";
+import ForgetPassword from "./pages/ForgetPassword";
 import MyProfile from "./pages/MyProfile";
 import MyTeamInfo from "./pages/MyTeamInfo";
 import Search from "./pages/Search";
@@ -14,6 +15,7 @@ const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/my-profile" element={<MyProfile />} />
