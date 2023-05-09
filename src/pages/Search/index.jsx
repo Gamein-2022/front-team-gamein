@@ -29,7 +29,18 @@ function Search() {
       });
   }, []);
 
-  const handleSendInvitation = (id) => {};
+  const handleSendInvitation = (id) => {
+    sendOffer(id)
+      .then((res) => res.data)
+      .then((data) => {
+        toast.success("دعوت با موفقیت فرستاده شد.");
+      })
+      .catch((e) => {
+        toast.error(
+          e?.response?.data?.message || "مشکلی در سامانه رخ داده است!"
+        );
+      });
+  };
 
   const handleSearch = () => {
     setActiveUsers(
@@ -72,7 +83,7 @@ function Search() {
                   {activeUsers.map((user) => (
                     <tr className="search-table__row">
                       <th>{user.username}</th>
-                      <th>{user.persianName + user.persianSurname}</th>
+                      <th>{user.persianName + " " + user.persianSurname}</th>
                       <td>
                         <Button onClick={() => handleSendInvitation(user.id)}>
                           دعوت به تیم
