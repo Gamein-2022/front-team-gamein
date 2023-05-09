@@ -35,7 +35,7 @@ jobs:
               
   deploy-front:
     needs: build-front
-    runs-on: [app]
+    runs-on: [app-1]
     steps:
       - uses: actions/checkout@master
       - run: |
