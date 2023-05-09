@@ -10,7 +10,10 @@ import DatePicker, { DateObject } from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import "react-multi-date-picker/styles/layouts/mobile.css";
-import { convertJalaliDateToGeorgian, convertNumberToEnglish } from "../../utils/formatters";
+import {
+  convertJalaliDateToGeorgian,
+  convertNumberToEnglish,
+} from "../../utils/formatters";
 
 function MyProfile() {
   const [isComplete, setIsComplete] = useState(false);
@@ -87,6 +90,10 @@ function MyProfile() {
       username: username || null,
       yearOfEntrance: yearOfEntrance || null,
     })
+      .then((res) => {
+        toast.success("اطلاعات با موفقیت ویرایش شد.");
+        setIsComplete(res.data.result.isComplete);
+      })
       .catch((e) => {
         toast.error(
           e?.response?.data?.message || "مشکلی در سامانه رخ داده است!"

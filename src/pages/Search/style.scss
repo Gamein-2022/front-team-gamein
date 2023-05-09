@@ -16,6 +16,12 @@
   margin: auto;
   text-align: center;
 
+  &__wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+    margin-top: 32px;
+  }
+
   thead {
     background-color: #e6e7e8;
     border-radius: 8px;

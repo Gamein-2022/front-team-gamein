@@ -3,54 +3,95 @@ import "./style.scss";
 import { getUsers, sendOffer } from "../../apis/team-building";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import { toast } from "react-toastify";
 
 function Search() {
   const [users, setUsers] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [activeUsers, setActiveUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
+
   useEffect(() => {
-    getUsers().then((res) => {
-      setUsers(res.data);
-    });
+    getUsers()
+      .then((res) => {
+        setUsers(res.data.result);
+        setActiveUsers(res.data.result);
+        setIsComplete(true);
+      })
+      .catch((e) => {
+        if (e.response?.status === 400) {
+          setIsComplete(false);
+        }
+        toast.error(
+          e?.response?.data?.message || "مشکلی در سامانه رخ داده است!"
+        );
+      });
   }, []);
+
+  const handleSendInvitation = (id) => {};
+
+  const handleSearch = () => {
+    setActiveUsers(
+      users.filter(
+        (item) =>
+          String(item.persianName + item.persianSurname).includes(
+            searchValue
+          ) || String(item.username).includes(searchValue)
+      )
+    );
+  };
 
   return (
     <div className="search">
-      <div className="search__title">جستجوی بازیکن‌ها</div>
-      <div style={{ maxWidth: 480 }}>
-        <Input label="جستجوی بازیکن:" placeholder="جستجوی بازیکن" />
-        <Button type={"blue"}>جستجو</Button>
-      </div>
-      <table className="search-table">
-        <thead>
-          <tr className="search-table__head">
-            <th>نام کاربری</th>
-            <th>نام و نام خانوادگی</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="search-table__row">
-            <td>aliheidari</td>
-            <td>علی حیدری</td>
-            <td>
-              <Button>دعوت به تیم</Button>
-            </td>
-          </tr>
-          <tr className="search-table__row">
-            <td>aliheidari</td>
-            <td>علی حیدری</td>
-            <td>
-              <Button>دعوت به تیم</Button>
-            </td>
-          </tr>
-          <tr className="search-table__row">
-            <td>aliheidari</td>
-            <td>علی حیدری</td>
-            <td>
-              <Button>دعوت به تیم</Button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      {isComplete && (
+        <>
+          <div className="search__title">جستجوی بازیکن‌ها</div>
+          <div style={{ maxWidth: 480 }}>
+            <Input
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              label="جستجوی بازیکن:"
+              placeholder="جستجوی بازیکن"
+            />
+            <Button onClick={handleSearch} type={"blue"}>
+              جستجو
+            </Button>
+          </div>
+          {activeUsers.length > 0 && (
+            <div className="search-table__wrapper">
+              <table className="search-table">
+                <thead>
+                  <tr className="search-table__head">
+                    <th>نام کاربری</th>
+                    <th>نام و نام خانوادگی</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {activeUsers.map((user) => (
+                    <tr className="search-table__row">
+                      <th>{user.username}</th>
+                      <th>{user.persianName + user.persianSurname}</th>
+                      <td>
+                        <Button onClick={() => handleSendInvitation(user.id)}>
+                          دعوت به تیم
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          {activeUsers.length <= 0 && <div>هیچ کاربری یافت نشد!</div>}
+        </>
+      )}
+      {!isComplete && (
+        <div style={{ textAlign: "center" }}>
+          برای ادامه‌ی کار ابتدا پروفایل خود را تکمیل کنید.
+        </div>
+      )}
     </div>
   );
 }
