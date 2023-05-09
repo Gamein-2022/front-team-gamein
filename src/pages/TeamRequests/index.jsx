@@ -10,12 +10,16 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import { toast } from "react-toastify";
+import GameinLoading from "../../components/GameinLoading";
 
 function TeamRequests() {
   const [otherOffers, setOtherOffers] = useState([]);
   const [myOffers, setMyOffers] = useState([]);
   const [isComplete, setIsComplete] = useState(false);
+  const [pageLoading, setPageLoading] = useState([false, false]);
+
   useEffect(() => {
+    setPageLoading([true, true]);
     getMyOffers()
       .then((res) => {
         setOtherOffers(res.data.result);
@@ -25,6 +29,9 @@ function TeamRequests() {
         if (e.response?.status === 400) {
           setIsComplete(false);
         }
+      })
+      .finally(() => {
+        setPageLoading((old) => [false, old[1]]);
       });
     getSentOffers()
       .then((res) => {
@@ -35,6 +42,9 @@ function TeamRequests() {
         if (e.response?.status === 400) {
           setIsComplete(false);
         }
+      })
+      .finally(() => {
+        setPageLoading((old) => [old[0], false]);
       });
   }, []);
 
@@ -91,56 +101,64 @@ function TeamRequests() {
 
   return (
     <div className="team-requests">
-      {isComplete && (
+      {pageLoading[0] || pageLoading[1] ? (
+        <GameinLoading size={32} />
+      ) : (
         <>
-          <div className="team-requests__title">درخواست‌های هم‌تیمی شدن</div>
-          <div className="request__section-title">درخواست‌های دیگران</div>
-          {otherOffers?.length <= 0 && <div>شما هیچ درخواستی ندارید.</div>}
-          {otherOffers?.map((offer) => (
-            <div className="other-request">
-              <div className="other-request__row">
-                <div className="my-request__column">{`کاربر ${
-                  (offer?.persianName || " ") +
-                  " " +
-                  (offer?.persianSurname || " ")
-                } از تیم ${offer?.teamName}`}</div>
-                <div
-                  onClick={() => handleAcceptOffer(offer?.id)}
-                  className="other-request__check"
-                >
-                  <CheckIcon />
-                </div>
-                <div
-                  onClick={() => handleRejectOffer(offer?.id)}
-                  className="other-request__close"
-                >
-                  <CloseIcon />
-                </div>
+          {isComplete && (
+            <>
+              <div className="team-requests__title">
+                درخواست‌های هم‌تیمی شدن
               </div>
-            </div>
-          ))}
+              <div className="request__section-title">درخواست‌های دیگران</div>
+              {otherOffers?.length <= 0 && <div>شما هیچ درخواستی ندارید.</div>}
+              {otherOffers?.map((offer) => (
+                <div className="other-request">
+                  <div className="other-request__row">
+                    <div className="my-request__column">{`کاربر ${
+                      (offer?.persianName || " ") +
+                      " " +
+                      (offer?.persianSurname || " ")
+                    } از تیم ${offer?.teamName}`}</div>
+                    <div
+                      onClick={() => handleAcceptOffer(offer?.id)}
+                      className="other-request__check"
+                    >
+                      <CheckIcon />
+                    </div>
+                    <div
+                      onClick={() => handleRejectOffer(offer?.id)}
+                      className="other-request__close"
+                    >
+                      <CloseIcon />
+                    </div>
+                  </div>
+                </div>
+              ))}
 
-          <div className="request__section-title">
-            درخواست‌های من (در انتظار تایید)
-          </div>
-          {myOffers?.length <= 0 && <div>شما هیچ درخواستی ندارید.</div>}
-          {myOffers.map((offer) => (
-            <div className="my-request">
-              <div className="my-request__row">
-                <div className="my-request__column">{offer?.username}</div>
-                <div className="my-request__column">{offer?.teamName}</div>
-                <div className="my-request__delete">
-                  <DeleteForeverOutlinedIcon />
-                </div>
+              <div className="request__section-title">
+                درخواست‌های من (در انتظار تایید)
               </div>
+              {myOffers?.length <= 0 && <div>شما هیچ درخواستی ندارید.</div>}
+              {myOffers.map((offer) => (
+                <div className="my-request">
+                  <div className="my-request__row">
+                    <div className="my-request__column">{offer?.username}</div>
+                    <div className="my-request__column">{offer?.teamName}</div>
+                    <div className="my-request__delete">
+                      <DeleteForeverOutlinedIcon />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
+          {!isComplete && (
+            <div style={{ textAlign: "center", color: "#000" }}>
+              برای ادامه‌ی کار ابتدا پروفایل خود را تکمیل کنید.
             </div>
-          ))}
+          )}
         </>
-      )}
-      {!isComplete && (
-        <div style={{ textAlign: "center", color: "#000" }}>
-          برای ادامه‌ی کار ابتدا پروفایل خود را تکمیل کنید.
-        </div>
       )}
     </div>
   );
