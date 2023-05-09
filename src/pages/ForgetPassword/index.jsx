@@ -43,7 +43,6 @@ function ForgetPassword() {
 
   const handleResetSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
     if (password != passwordAgain) {
       return toast.error("تکرار رمز عبور با رمز عبور متفاوت است!");
     }

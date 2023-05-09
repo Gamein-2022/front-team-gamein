@@ -5,6 +5,7 @@ import {
   acceptOffer,
   getSentOffers,
   declineOthersOffer,
+  cancelSentOffer,
 } from "../../apis/team-building";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
@@ -99,6 +100,19 @@ function TeamRequests() {
       });
   };
 
+  const handleCancelMyOffer = (id) => {
+    cancelSentOffer(id)
+      .then((res) => res.data)
+      .then((data) => {
+        toast.success("پیشنهاد با موفقیت حذف شد.");
+      })
+      .catch((err) => {
+        toast.error(
+          err?.response?.data?.message || "مشکلی در سامانه رخ داده است!"
+        );
+      });
+  };
+
   return (
     <div className="team-requests">
       {pageLoading[0] || pageLoading[1] ? (
@@ -145,7 +159,10 @@ function TeamRequests() {
                   <div className="my-request__row">
                     <div className="my-request__column">{offer?.username}</div>
                     <div className="my-request__column">{offer?.teamName}</div>
-                    <div className="my-request__delete">
+                    <div
+                      onClick={() => handleCancelMyOffer(offer.id)}
+                      className="my-request__delete"
+                    >
                       <DeleteForeverOutlinedIcon />
                     </div>
                   </div>

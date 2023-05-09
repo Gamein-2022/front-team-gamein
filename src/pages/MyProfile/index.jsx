@@ -13,6 +13,8 @@ import GameinLoading from "../../components/GameinLoading";
 import {
   convertJalaliDateToGeorgian,
   convertNumberToEnglish,
+  isEnglish,
+  isPersian,
 } from "../../utils/formatters";
 import "react-multi-date-picker/styles/layouts/mobile.css";
 
@@ -35,6 +37,11 @@ function MyProfile() {
   const [loading, setLoading] = useState(false);
   const startDatePickerRef = useRef(null);
   const [pageLoading, setPageLoading] = useState(false);
+
+  const [persianNameError, setPersianNameError] = useState(false);
+  const [persianSurnameError, setPersianSurnameError] = useState(false);
+  const [engilshNameError, setEngilshNameError] = useState(false);
+  const [englishSurnameError, setEnglishSurnameError] = useState(false);
 
   useEffect(() => {
     setPageLoading(true);
@@ -136,7 +143,13 @@ function MyProfile() {
               value={persianName}
               onChange={(e) => {
                 setPersianName(e.target.value);
+                if (isPersian(persianName)) {
+                  setPersianNameError(false);
+                } else {
+                  setPersianNameError(true);
+                }
               }}
+              error={isPersian(persianName) ? "" : "فقط حروف فارسی"}
             />
             <Input
               label="نام خانوادگی فارسی:"
@@ -144,7 +157,13 @@ function MyProfile() {
               value={persianSurname}
               onChange={(e) => {
                 setPersianSurname(e.target.value);
+                if (isPersian(persianSurname)) {
+                  setPersianSurnameError(false);
+                } else {
+                  setPersianSurnameError(true);
+                }
               }}
+              error={isPersian(persianSurname) ? "" : "فقط حروف فارسی"}
             />
             <Input
               label="نام انگلیسی:"
@@ -152,7 +171,13 @@ function MyProfile() {
               value={englishName}
               onChange={(e) => {
                 setEnglishName(e.target.value);
+                if (isEnglish(englishName)) {
+                  setEngilshNameError(false);
+                } else {
+                  setEngilshNameError(true);
+                }
               }}
+              error={isEnglish(englishName) ? "" : "فقط حروف انگلیسی"}
             />
             <Input
               label="نام خانوادگی انگلیسی:"
@@ -160,7 +185,13 @@ function MyProfile() {
               value={englishSurname}
               onChange={(e) => {
                 setEnglishSurname(e.target.value);
+                if (isEnglish(englishSurname)) {
+                  setEnglishSurnameError(false);
+                } else {
+                  setEnglishSurnameError(true);
+                }
               }}
+              error={isEnglish(englishSurname) ? "" : "فقط حروف انگلیسی"}
             />
             <div style={{ margin: "16px 0" }}>
               <div>جنسیت:</div>
@@ -330,7 +361,16 @@ function MyProfile() {
                 <MenuItem value={"OTHER"}>سایر</MenuItem>
               </Select>
             </div>
-            <Button type="blue" onClick={submitInfo} disabled={loading}>
+            <Button
+              disabled={
+                persianNameError ||
+                persianSurnameError ||
+                engilshNameError ||
+                englishSurnameError ||
+                loading
+              }
+              onClick={submitInfo}
+            >
               ویرایش اطلاعات
             </Button>
           </div>

@@ -1,5 +1,9 @@
 import moment from "jalali-moment";
 
+export function isEmpty(s) {
+  return String(s).trim() === "";
+}
+
 export const convertNumberToEnglish = (input) => {
   input = `${input}`;
   const english = {
@@ -29,4 +33,28 @@ export const convertJalaliDateToGeorgian = (date) => {
   return moment
     .from(convertNumberToEnglish(date), "fa", "YYYY/MM/DD")
     .format("YYYY-MM-DD");
+};
+
+export const isPersian = (str) => {
+  if (isEmpty(str)) {
+    return true;
+  }
+  const p = /^[\u0600-\u06FF\s]+$/;
+
+  if (!p.test(str)) {
+    return false;
+  }
+  return true;
+};
+
+export const isEnglish = (str) => {
+  if (isEmpty(str)) {
+    return true;
+  }
+  const english = /^[A-Za-z0-9]*$/;
+
+  if (!english.test(str)) {
+    return false;
+  }
+  return true;
 };
