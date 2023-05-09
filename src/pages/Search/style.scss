@@ -10,3 +10,27 @@
     margin-bottom: 16px;
   }
 }
+
+.search-table {
+  border-collapse: collapse;
+  margin: auto;
+  text-align: center;
+
+  thead {
+    background-color: #e6e7e8;
+    border-radius: 8px;
+  }
+
+  th,
+  td {
+    padding: 8px 16px;
+  }
+
+  tr {
+    border-bottom: 1px solid #acacac;
+  }
+
+  tr:last-child {
+    border-bottom: none;
+  }
+}

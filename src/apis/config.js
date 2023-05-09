@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AxiosInstance = axios.create({
-  baseURL: "http://localhost",
+  baseURL: "https://api-team.gamein.tech/",
   headers: {
     "Content-Type": "application/json",
   },

@@ -9,4 +9,25 @@
     font-weight: 500;
     margin-bottom: 16px;
   }
+
+  &__person {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #797979;
+    background-color: #f1f2f2;
+    color: #acacac;
+    padding: 8px;
+    margin: 16px;
+    border-radius: 8px;
+  }
+
+  &__no-team {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    margin: 16px;
+    border: 1px dashed #797979;
+    background-color: #f1f2f2;
+    color: #acacac;
+  }
 }

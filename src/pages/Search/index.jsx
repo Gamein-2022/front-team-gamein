@@ -15,8 +15,42 @@ function Search() {
   return (
     <div className="search">
       <div className="search__title">جستجوی بازیکن‌ها</div>
-      <Input label="جستجوی بازیکن" placeholder="جستجوی بازیکن" />
-      <Button>جستجو</Button>
+      <div style={{ maxWidth: 480 }}>
+        <Input label="جستجوی بازیکن:" placeholder="جستجوی بازیکن" />
+        <Button type={"blue"}>جستجو</Button>
+      </div>
+      <table className="search-table">
+        <thead>
+          <tr className="search-table__head">
+            <th>نام کاربری</th>
+            <th>نام و نام خانوادگی</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="search-table__row">
+            <td>aliheidari</td>
+            <td>علی حیدری</td>
+            <td>
+              <Button>دعوت به تیم</Button>
+            </td>
+          </tr>
+          <tr className="search-table__row">
+            <td>aliheidari</td>
+            <td>علی حیدری</td>
+            <td>
+              <Button>دعوت به تیم</Button>
+            </td>
+          </tr>
+          <tr className="search-table__row">
+            <td>aliheidari</td>
+            <td>علی حیدری</td>
+            <td>
+              <Button>دعوت به تیم</Button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }

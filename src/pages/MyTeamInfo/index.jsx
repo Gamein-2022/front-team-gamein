@@ -55,13 +55,13 @@ function MyTeamInfo() {
       >
         create
       </Button>
-      <div>
+      <div className="my-team-info__person">
         <div>aliheidarime</div>
         <div>علی حیدری</div>
         <div>صنایع شریف</div>
       </div>
-      <div>جای هم‌تیمیت خالیه!</div>
-      <div>جای هم‌تیمیت خالیه!</div>
+      <div className="my-team-info__no-team">جای هم‌تیمیت خالیه!</div>
+      <div className="my-team-info__no-team">جای هم‌تیمیت خالیه!</div>
     </div>
   );
 }

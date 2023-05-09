@@ -1,43 +1,43 @@
 import AxiosInstance from "./config";
 
 export const getUsers = () => {
-  return AxiosInstance.get("/dashboard/team/users");
+  return AxiosInstance.get("/team/team/users");
 };
 
 export const sendOffer = (userId) => {
-  return AxiosInstance.post("/dashboard/team/team-offer", { userId });
+  return AxiosInstance.post("/team/team/team-offer", { userId });
 };
 
 export const getTeamInfo = () => {
-  return AxiosInstance.get("/dashboard/team");
+  return AxiosInstance.get("/team/team");
 };
 
 export const getMyOffers = () => {
-  return AxiosInstance.get("/dashboard/team/offers");
+  return AxiosInstance.get("/team/team/offers");
 };
 
 export const getSentOffers = () => {
-  return AxiosInstance.get("/dashboard/team/sent-offers");
+  return AxiosInstance.get("/team/team/sent-offers");
 };
 
 export const acceptOffer = (offerId) => {
-  return AxiosInstance.put("/dashboard/team/accept-offer", {
+  return AxiosInstance.put("/team/team/accept-offer", {
     offerId,
   });
 };
 
 export const leaveTeam = () => {
-  return AxiosInstance.delete("/dashboard/team");
+  return AxiosInstance.delete("/team/team");
 };
 
 export const getProfileInfo = () => {
-  return AxiosInstance.get("/dashboard/team/profile");
+  return AxiosInstance.get("/team/team/profile");
 };
 
 export const updateProfileInfo = (info) => {
-  return AxiosInstance.put("/dashboard/team/profile", info);
+  return AxiosInstance.put("/team/team/profile", info);
 };
 
 export const createTeam = (name) => {
-  return AxiosInstance.post("/dashboard/team", { name });
+  return AxiosInstance.post("/team/team", { name });
 };
