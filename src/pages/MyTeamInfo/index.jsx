@@ -1,30 +1,60 @@
 import { useEffect, useState } from "react";
 import "./style.scss";
-import {
-  getSentOffers,
-  getTeamInfo,
-  leaveTeam,
-} from "../../apis/team-building";
+import { getTeamInfo, leaveTeam, createTeam } from "../../apis/team-building";
 import Input from "../../components/Input";
+import Button from "../../components/Button";
+import { toast } from "react-toastify";
 
 function MyTeamInfo() {
+  const [teamName, setTeamName] = useState("");
   const [teamInfo, setTeamInfo] = useState(null);
-  const [sentOffers, setSentOffers] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    getTeamInfo().then((res) => {
-      setTeamInfo(res.data);
-    });
-  }, []);
-  useEffect(() => {
-    getSentOffers().then((res) => {
-      setSentOffers(res.data);
-    });
+    setLoading(true);
+    getTeamInfo()
+      .then((res) => {
+        setTeamInfo(res.data);
+      })
+      .catch((e) => {
+        toast.error(
+          e?.response?.data?.message || "مشکلی در سامانه رخ داده است!"
+        );
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   return (
     <div className="my-team-info">
       <div className="my-team-info__title">اطلاعات تیم من</div>
-      <Input label="اسم تیم" />
+      <Input
+        label="اسم تیم"
+        value={teamName}
+        onChange={(e) => {
+          setTeamName(e.target.value);
+        }}
+      />
+      <Button
+        onClick={() => {
+          setLoading(true);
+          createTeam(teamName)
+            .then((res) => {
+              setTeamInfo(res.data);
+            })
+            .catch((e) => {
+              toast.error(
+                e?.response?.data?.message || "مشکلی در سامانه رخ داده است!"
+              );
+            })
+            .finally(() => {
+              setLoading(false);
+            });
+        }}
+      >
+        create
+      </Button>
       <div>
         <div>aliheidarime</div>
         <div>علی حیدری</div>

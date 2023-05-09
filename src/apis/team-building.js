@@ -27,5 +27,17 @@ export const acceptOffer = (offerId) => {
 };
 
 export const leaveTeam = () => {
-  return AxiosInstance.delete("/dashboard/team-building");
+  return AxiosInstance.delete("/dashboard/team");
+};
+
+export const getProfileInfo = () => {
+  return AxiosInstance.get("/dashboard/team/profile");
+};
+
+export const updateProfileInfo = (info) => {
+  return AxiosInstance.put("/dashboard/team/profile", info);
+};
+
+export const createTeam = (name) => {
+  return AxiosInstance.post("/dashboard/team", { name });
 };

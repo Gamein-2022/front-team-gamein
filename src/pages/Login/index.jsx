@@ -33,7 +33,7 @@ function Login() {
     login({ username, password })
       .then((res) => {
         toast.success("با موفقیت وارد شدید.");
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.result.token);
         navigate("/");
       })
       .catch((error) => {
