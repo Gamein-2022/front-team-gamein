@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Helmet from "react-helmet";
 import gamein2022Img from "../../assets/gamein-2022.svg";
 import dariaLogoImg from "../../assets/daria-logo.png";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 
 import { forgetPassword, resetPassword } from "../../apis/auth";
@@ -18,6 +18,10 @@ function ForgetPassword() {
   const [step, setStep] = useState("forget-password");
 
   const navigate = useNavigate();
+
+  if (localStorage.getItem("token")) {
+    return <Navigate to={"/my-profile"} />;
+  }
 
   const handleForgetSubmit = (e) => {
     e.preventDefault();

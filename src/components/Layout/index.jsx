@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Navigate, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
 
 import LayoutHeader from "../LayoutHeader";
@@ -11,6 +11,10 @@ const Layout = () => {
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const navigate = useNavigate();
+
+  if (!localStorage.getItem("token")) {
+    return <Navigate to={"/login"} />;
+  }
 
   return (
     <>
