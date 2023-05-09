@@ -120,8 +120,11 @@ function MyTeamInfo() {
               )}
               {teamInfo?.users?.map((user) => (
                 <div className="my-team-info__person">
-                  <div>{user.username}</div>
-                  <div>{user.persianName + " " + user.persianSurname}</div>
+                  <div>نام کاربری: {user.username}</div>
+                  <div>
+                    نام و نام‌خانوادگی:{" "}
+                    {user.persianName + " " + user.persianSurname}
+                  </div>
                 </div>
               ))}
               {Array(3 - (teamInfo?.users?.length || 0))

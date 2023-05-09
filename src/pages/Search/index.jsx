@@ -48,11 +48,12 @@ function Search() {
       });
   };
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
     setActiveUsers(
       users.filter(
         (item) =>
-          String(item.persianName + item.persianSurname).includes(
+          String(item.persianName + " " + item.persianSurname).includes(
             searchValue
           ) || String(item.username).includes(searchValue)
       )
@@ -67,17 +68,15 @@ function Search() {
           {isComplete && (
             <>
               <div className="search__title">جستجوی بازیکن‌ها</div>
-              <div style={{ maxWidth: 480 }}>
+              <form onSubmit={handleSearch} style={{ maxWidth: 480 }}>
                 <Input
                   value={searchValue}
                   onChange={(e) => setSearchValue(e.target.value)}
                   label="جستجوی بازیکن:"
                   placeholder="جستجوی بازیکن"
                 />
-                <Button onClick={handleSearch} type={"blue"}>
-                  جستجو
-                </Button>
-              </div>
+                <Button type={"blue"}>جستجو</Button>
+              </form>
               {activeUsers.length > 0 && (
                 <div className="search-table__wrapper">
                   <table className="search-table">
