@@ -14,6 +14,6 @@ COPY . ./
 RUN npm run build
 
 # serve app
-FROM nginx:latest
+FROM registry.dariasystem.com/gamein/nginx:v1
 COPY ./default.conf /etc/nginx/conf.d/
 COPY --from=build /app/build /usr/share/nginx/html
