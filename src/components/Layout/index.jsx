@@ -10,6 +10,7 @@ import "./style.scss";
 const Layout = () => {
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -37,7 +38,7 @@ const Layout = () => {
                     })
                   }
                   to="/my-profile"
-                  style={{ zIndex: 4 }}
+                  style={{ zIndex: 5 }}
                 >
                   پروفایل من
                 </NavLink>
@@ -48,7 +49,7 @@ const Layout = () => {
                     })
                   }
                   to="/my-team-info"
-                  style={{ zIndex: 3 }}
+                  style={{ zIndex: 4 }}
                 >
                   اطلاعات تیم من
                 </NavLink>
@@ -59,7 +60,7 @@ const Layout = () => {
                     })
                   }
                   to="/search"
-                  style={{ zIndex: 2 }}
+                  style={{ zIndex: 3 }}
                 >
                   جستجوی بازیکن‌ها
                 </NavLink>
@@ -70,10 +71,20 @@ const Layout = () => {
                     })
                   }
                   to="/team-requests"
-                  style={{ zIndex: 1 }}
+                  style={{ zIndex: 2 }}
                 >
                   درخواست‌های هم‌تیمی شدن
                 </NavLink>
+                <div
+                  className={"layout__right-item"}
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    navigate("/login");
+                  }}
+                  style={{ zIndex: 1 }}
+                >
+                  خروج
+                </div>
               </div>
             </div>
             <div className="layout__left">
