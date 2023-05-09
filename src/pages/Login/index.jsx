@@ -34,7 +34,7 @@ function Login() {
       .then((res) => {
         toast.success("با موفقیت وارد شدید.");
         localStorage.setItem("token", res.data.result.token);
-        navigate("/");
+        navigate("/my-profile");
       })
       .catch((error) => {
         if (error.response?.status === 404) {

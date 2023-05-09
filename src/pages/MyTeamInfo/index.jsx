@@ -28,15 +28,18 @@ function MyTeamInfo() {
 
   return (
     <div className="my-team-info">
-      <div className="my-team-info__title">اطلاعات تیم من</div>
-      <Input
-        label="اسم تیم"
-        value={teamName}
-        onChange={(e) => {
-          setTeamName(e.target.value);
-        }}
-      />
+      <div style={{ maxWidth: 480 }}>
+        <div className="my-team-info__title">اطلاعات تیم من</div>
+        <Input
+          label="اسم تیم"
+          value={teamName}
+          onChange={(e) => {
+            setTeamName(e.target.value);
+          }}
+        />
+      </div>
       <Button
+        type={"blue"}
         onClick={() => {
           setLoading(true);
           createTeam(teamName)
@@ -53,7 +56,7 @@ function MyTeamInfo() {
             });
         }}
       >
-        create
+        ویرایش
       </Button>
       <div className="my-team-info__person">
         <div>aliheidarime</div>

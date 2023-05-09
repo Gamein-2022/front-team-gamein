@@ -23,5 +23,11 @@
   &__form {
     max-width: 480px;
     margin: auto;
+    display: flex;
+    flex-direction: column;
   }
+}
+
+.date-input {
+  display: none;
 }

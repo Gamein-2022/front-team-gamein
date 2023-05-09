@@ -39,6 +39,7 @@ function ForgetPassword() {
 
   const handleResetSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     if (password != passwordAgain) {
       return toast.error("تکرار رمز عبور با رمز عبور متفاوت است!");
     }
@@ -46,6 +47,7 @@ function ForgetPassword() {
     resetPassword({ code, password })
       .then(() => {
         toast.success("رمز عبور شما با موفقیت تغییر یافت!");
+        navigate("/login");
       })
       .catch((e) => {
         toast.error(
@@ -122,6 +124,7 @@ function ForgetPassword() {
               تغییر ایمیل
             </div>
             <Button
+              disabled={loading}
               onClick={() => {}}
               type={"white"}
               className="forget-password__btn"
