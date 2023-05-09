@@ -3,7 +3,6 @@ networks:
    gamein:
      external: true
 
-
 services:
   front-team:
     image: registry.dariasystem.com/gamein/front-team:dev
