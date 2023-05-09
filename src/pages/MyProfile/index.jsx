@@ -277,7 +277,7 @@ function MyProfile() {
               </Select>
             </div>
             <Input
-              label="سال ورود:"
+              label="سال ورود به دانشگاه/مدرسه:"
               placeholder="سال ورود"
               value={yearOfEntrance}
               type="number"
