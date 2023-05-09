@@ -12,10 +12,10 @@
 
   &__person {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     border: 1px solid #797979;
     background-color: #f1f2f2;
-    color: #acacac;
+    color: #797979;
     padding: 8px;
     margin: 16px;
     border-radius: 8px;
@@ -28,6 +28,7 @@
     margin: 16px;
     border: 1px dashed #797979;
     background-color: #f1f2f2;
-    color: #acacac;
+    border-radius: 8px;
+    color: #797979;
   }
 }

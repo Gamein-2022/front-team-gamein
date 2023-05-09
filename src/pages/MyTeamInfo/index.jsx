@@ -15,8 +15,8 @@ function MyTeamInfo() {
     setLoading(true);
     getTeamInfo()
       .then((res) => {
-        setTeamInfo(res.data.result);
-        setTeamName(res.data.result.name);
+        setTeamInfo(res?.data?.result);
+        setTeamName(res?.data?.result?.name);
         setIsComplete(true);
       })
       .catch((e) => {
@@ -65,6 +65,7 @@ function MyTeamInfo() {
               onChange={(e) => {
                 setTeamName(e.target.value);
               }}
+              disabled={teamInfo?.name}
             />
           </div>
           {!teamInfo?.name && (
@@ -74,7 +75,8 @@ function MyTeamInfo() {
                 setLoading(true);
                 createTeam(teamName)
                   .then((res) => {
-                    setTeamInfo(res.data);
+                    setTeamInfo(res.data.result);
+                    toast.success("تیم با موفقیت ساخته شد.");
                   })
                   .catch((e) => {
                     toast.error(
@@ -114,7 +116,7 @@ function MyTeamInfo() {
           {teamInfo?.users?.map((user) => (
             <div className="my-team-info__person">
               <div>{user.username}</div>
-              <div>{user.persianName + " " + user.persianSurName}</div>
+              <div>{user.persianName + " " + user.persianSurname}</div>
             </div>
           ))}
           {Array(3 - (teamInfo?.users?.length || 0))

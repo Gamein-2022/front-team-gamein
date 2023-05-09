@@ -10,6 +10,13 @@
   }
 }
 
+.request {
+  &__section-title {
+    color: #000;
+    margin: 16px 0;
+  }
+}
+
 .other-request {
   display: flex;
   flex-direction: column;

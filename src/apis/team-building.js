@@ -41,3 +41,11 @@ export const updateProfileInfo = (info) => {
 export const createTeam = (name) => {
   return AxiosInstance.post("/team/team", { name });
 };
+
+export const cancelSentOffer = (id) => {
+  return AxiosInstance.delete(`/team/team/sent-offers/${id}`);
+};
+
+export const declineOthersOffer = (id) => {
+  return AxiosInstance.delete(`/team/team/offers/${id}`);
+};
