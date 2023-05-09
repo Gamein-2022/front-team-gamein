@@ -105,6 +105,7 @@ function TeamRequests() {
       .then((res) => res.data)
       .then((data) => {
         toast.success("پیشنهاد با موفقیت حذف شد.");
+        updateOffers();
       })
       .catch((err) => {
         toast.error(
