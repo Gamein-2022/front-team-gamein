@@ -1,5 +1,6 @@
 # pull official base image
-FROM node:latest AS build
+#FROM node:latest AS build
+FROM registry.dariasystem.com/gamein/node:v1 AS build
 
 # set working directory
 WORKDIR /app
