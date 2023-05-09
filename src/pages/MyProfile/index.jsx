@@ -9,12 +9,12 @@ import { majors, provinces, universities } from "./constants";
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
-import "react-multi-date-picker/styles/layouts/mobile.css";
 import GameinLoading from "../../components/GameinLoading";
 import {
   convertJalaliDateToGeorgian,
   convertNumberToEnglish,
 } from "../../utils/formatters";
+import "react-multi-date-picker/styles/layouts/mobile.css";
 
 function MyProfile() {
   const [isComplete, setIsComplete] = useState(false);
