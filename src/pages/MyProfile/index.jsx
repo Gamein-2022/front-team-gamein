@@ -5,7 +5,7 @@ import Button from "../../components/Button";
 import { getProfileInfo, updateProfileInfo } from "../../apis/team-building";
 import "./style.scss";
 import { toast } from "react-toastify";
-import { provinces, universities } from "./constants";
+import { majors, provinces, universities } from "./constants";
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
@@ -201,14 +201,28 @@ function MyProfile() {
                 <MenuItem value={"PHD"}>دکتری</MenuItem>
               </Select>
             </div>
-            <Input
-              label="رشته تحصیلی:"
-              placeholder="رشته تحصیلی"
-              value={major}
-              onChange={(e) => {
-                setMajor(e.target.value);
-              }}
-            />
+            <div style={{ margin: "16px 0" }}>
+              <div>رشته تحصیلی: </div>
+              <Select
+                value={major}
+                onChange={(e) => {
+                  setMajor(e.target.value);
+                }}
+                placeholder="رشته تحصیلی"
+                style={{ margin: "4px 0", minWidth: "50%" }}
+                displayEmpty
+              >
+                <MenuItem value={""} disabled>
+                  رشته تحصیلی
+                </MenuItem>
+                {majors.map((maj) => (
+                  <MenuItem key={maj} value={maj}>
+                    {maj}
+                  </MenuItem>
+                ))}
+                <MenuItem value={"سایر"}>سایر </MenuItem>
+              </Select>
+            </div>
             <div style={{ margin: "16px 0" }}>
               <div>محل تحصیل: </div>
               <Select
@@ -236,6 +250,8 @@ function MyProfile() {
               placeholder="سال ورود"
               value={yearOfEntrance}
               type="number"
+              min={1350}
+              max={1402}
               onChange={(e) => {
                 setYearOfEntrance(e.target.value);
               }}
