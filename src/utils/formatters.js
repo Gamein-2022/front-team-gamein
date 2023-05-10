@@ -39,9 +39,10 @@ export const isPersian = (str) => {
   if (isEmpty(str)) {
     return true;
   }
+  const trimmed = str.replace(/\s/g, "");
   const p = /^[\u0600-\u06FF\s]+$/;
 
-  if (!p.test(str)) {
+  if (!p.test(trimmed)) {
     return false;
   }
   return true;
@@ -51,9 +52,10 @@ export const isEnglish = (str) => {
   if (isEmpty(str)) {
     return true;
   }
+  const trimmed = str.replace(/\s/g, "");
   const english = /^[A-Za-z0-9]*$/;
 
-  if (!english.test(str)) {
+  if (!english.test(trimmed)) {
     return false;
   }
   return true;
