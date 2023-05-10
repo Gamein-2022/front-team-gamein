@@ -118,6 +118,21 @@ function MyProfile() {
       {pageLoading && <GameinLoading size={32} />}
       {!pageLoading && (
         <>
+          <div
+            style={{
+              textAlign: "center",
+              color: "#A8262B",
+              fontWeight: 600,
+              padding: 16,
+              borderRadius: 8,
+            }}
+          >
+            زمان تیم‌کشی به پایان رسیده.
+            <br />
+            به زودی تیم‌هایی نهایی مشخص می‌شن.
+            <br />
+            با هم‌تیمی‌های خود ارتباط بگیرید.
+          </div>
           <div className="my-profile__title">مشاهده پروفایل</div>
           {!isComplete && (
             <div className="my-profile__not-complete">

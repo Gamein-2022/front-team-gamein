@@ -61,6 +61,22 @@ function MyTeamInfo() {
         <>
           {isComplete && (
             <>
+              <div
+                style={{
+                  textAlign: "center",
+                  color: "#A8262B",
+                  fontWeight: 600,
+                  padding: 16,
+                  borderRadius: 8,
+                }}
+              >
+                زمان تیم‌کشی به پایان رسیده.
+                <br />
+                به زودی تیم‌هایی نهایی مشخص می‌شن.
+                <br />
+                با هم‌تیمی‌های خود ارتباط بگیرید.
+              </div>
+
               <div style={{ maxWidth: 480 }}>
                 <div className="my-team-info__title">اطلاعات تیم من</div>
                 <Input
