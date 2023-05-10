@@ -97,7 +97,7 @@ function MyTeamInfo() {
                   ساخت تیم
                 </Button>
               )}
-              {teamInfo?.name && (
+              {/* {teamInfo?.name && (
                 <Button
                   type={"error"}
                   onClick={() => {
@@ -117,7 +117,7 @@ function MyTeamInfo() {
                 >
                   خروج از تیم
                 </Button>
-              )}
+              )} */}
               {teamInfo?.users?.map((user) => (
                 <div className="my-team-info__person">
                   <div className="my-team-info__person-col">
