@@ -53,9 +53,9 @@ function Search() {
     setActiveUsers(
       users.filter(
         (item) =>
-          String(item.persianName + " " + item.persianSurname).includes(
-            searchValue
-          ) || String(item.username).includes(searchValue)
+          String(item.persianName + " " + item.persianSurname).toLowerCase().includes(
+            String(searchValue).toLowerCase()
+          ) || String(item.username).toLowerCase().includes(String(searchValue).toLowerCase())
       )
     );
   };
