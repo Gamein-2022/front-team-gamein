@@ -158,8 +158,12 @@ function TeamRequests() {
               {myOffers.map((offer) => (
                 <div className="my-request">
                   <div className="my-request__row">
-                    <div className="my-request__column">{offer?.username}</div>
-                    <div className="my-request__column">{offer?.teamName}</div>
+                    <div className="my-request__column">
+                      به کاربر {offer?.persianName} {offer?.persianSurname}
+                    </div>
+                    <div className="my-request__column">
+                      با نام کاربری {offer?.username}
+                    </div>
                     <div
                       onClick={() => handleCancelMyOffer(offer.id)}
                       className="my-request__delete"
