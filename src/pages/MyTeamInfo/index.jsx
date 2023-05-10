@@ -120,12 +120,16 @@ function MyTeamInfo() {
               )}
               {teamInfo?.users?.map((user) => (
                 <div className="my-team-info__person">
-                  <div>نام کاربری: {user.username}</div>
-                  <div>
+                  <div className="my-team-info__person-col">
+                    نام کاربری: {user.username}
+                  </div>
+                  <div className="my-team-info__person-col">
                     نام و نام‌خانوادگی:{" "}
                     {user.persianName + " " + user.persianSurname}
                   </div>
-                  <div>ایمیل: {user?.email || ""}</div>
+                  <div className="my-team-info__person-col">
+                    ایمیل: {user?.email || ""}
+                  </div>
                 </div>
               ))}
               {Array(3 - (teamInfo?.users?.length || 0))
