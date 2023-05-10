@@ -19,10 +19,12 @@
     padding: 8px;
     margin: 16px;
     border-radius: 8px;
+    width: calc(100% - 32px);
   }
 
   &__no-team {
     display: flex;
+    width: calc(100% - 32px);
     justify-content: center;
     padding: 8px;
     margin: 16px;

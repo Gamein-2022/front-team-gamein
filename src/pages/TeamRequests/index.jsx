@@ -130,22 +130,20 @@ function TeamRequests() {
               {otherOffers?.map((offer) => (
                 <div className="other-request">
                   <div className="other-request__row">
-                    <div className="my-request__column">{`کاربر ${
-                      (offer?.persianName || " ") +
-                      " " +
-                      (offer?.persianSurname || " ")
-                    } از تیم ${offer?.teamName}`}</div>
-                    <div
-                      onClick={() => handleAcceptOffer(offer?.id)}
-                      className="other-request__check"
-                    >
-                      <CheckIcon />
-                    </div>
-                    <div
-                      onClick={() => handleRejectOffer(offer?.id)}
-                      className="other-request__close"
-                    >
-                      <CloseIcon />
+                    <div className="my-request__column">{`از تیم ${offer?.teamName}`}</div>
+                    <div style={{ display: "flex" }}>
+                      <div
+                        onClick={() => handleAcceptOffer(offer?.id)}
+                        className="other-request__check"
+                      >
+                        <CheckIcon />
+                      </div>
+                      <div
+                        onClick={() => handleRejectOffer(offer?.id)}
+                        className="other-request__close"
+                      >
+                        <CloseIcon />
+                      </div>
                     </div>
                   </div>
                 </div>

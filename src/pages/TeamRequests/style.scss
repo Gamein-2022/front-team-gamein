@@ -26,9 +26,11 @@
   margin: 16px 0;
 
   &__row {
+    width: 100%;
+    max-width: 768px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border: 1px solid #acacac;
     border-radius: 8px;
     margin: auto;
@@ -67,9 +69,11 @@
   margin: 16px 0;
 
   &__row {
+    width: 100%;
+    max-width: 768px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border: 1px solid #acacac;
     border-radius: 8px;
     margin: auto;

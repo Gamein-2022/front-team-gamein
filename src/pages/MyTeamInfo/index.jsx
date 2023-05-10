@@ -125,6 +125,7 @@ function MyTeamInfo() {
                     نام و نام‌خانوادگی:{" "}
                     {user.persianName + " " + user.persianSurname}
                   </div>
+                  <div>ایمیل: {user?.email || ""}</div>
                 </div>
               ))}
               {Array(3 - (teamInfo?.users?.length || 0))
