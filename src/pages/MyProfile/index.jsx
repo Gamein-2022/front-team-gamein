@@ -129,15 +129,12 @@ function MyProfile() {
           >
             زمان تیم‌کشی به پایان رسیده.
             <br />
-            به زودی تیم‌هایی نهایی مشخص می‌شن.
-            <br />
             با هم‌تیمی‌های خود ارتباط بگیرید.
           </div>
           <div className="my-profile__title">مشاهده پروفایل</div>
           {!isComplete && (
             <div className="my-profile__not-complete">
-              پروفایل شما کامل نیست! برای تشکیل تیم یا هم‌تیمی شدن با بقیه
-              پروفایلتون رو کامل کنین.
+              پروفایل شما کامل نیست!
             </div>
           )}
           {isComplete && (
@@ -165,7 +162,7 @@ function MyProfile() {
                   setPersianNameError(true);
                 }
               }}
-              error={isPersian(persianName) ? "" : "فقط حروف فارسی"}
+              // error={isPersian(persianName) ? "" : "فقط حروف فارسی"}
               disabled
             />
             <Input
@@ -180,7 +177,7 @@ function MyProfile() {
                   setPersianSurnameError(true);
                 }
               }}
-              error={isPersian(persianSurname) ? "" : "فقط حروف فارسی"}
+              // error={isPersian(persianSurname) ? "" : "فقط حروف فارسی"}
               disabled
             />
             <Input
@@ -195,7 +192,7 @@ function MyProfile() {
                   setEngilshNameError(true);
                 }
               }}
-              error={isEnglish(englishName) ? "" : "فقط حروف انگلیسی"}
+              // error={isEnglish(englishName) ? "" : "فقط حروف انگلیسی"}
               disabled
             />
             <Input
@@ -210,7 +207,7 @@ function MyProfile() {
                   setEnglishSurnameError(true);
                 }
               }}
-              error={isEnglish(englishSurname) ? "" : "فقط حروف انگلیسی"}
+              // error={isEnglish(englishSurname) ? "" : "فقط حروف انگلیسی"}
               disabled
             />
             <div style={{ margin: "16px 0" }}>
