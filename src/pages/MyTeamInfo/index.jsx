@@ -5,6 +5,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { toast } from "react-toastify";
 import GameinLoading from "../../components/GameinLoading";
+import { Helmet } from "react-helmet";
 
 function MyTeamInfo() {
   const [teamName, setTeamName] = useState("");
@@ -56,12 +57,15 @@ function MyTeamInfo() {
 
   return (
     <div className="my-team-info">
+      <Helmet>
+        <title>اطلاعات تیم من</title>
+      </Helmet>
       {pageLoading && <GameinLoading size={32} />}
       {!pageLoading && (
         <>
           {isComplete && (
             <>
-              <div
+              {/* <div
                 style={{
                   textAlign: "center",
                   color: "#A8262B",
@@ -73,7 +77,7 @@ function MyTeamInfo() {
                 زمان تیم‌کشی به پایان رسیده.
                 <br />
                 با هم‌تیمی‌های خود ارتباط بگیرید.
-              </div>
+              </div> */}
 
               <div style={{ maxWidth: 480 }}>
                 <div className="my-team-info__title">اطلاعات تیم من</div>
@@ -111,7 +115,7 @@ function MyTeamInfo() {
                   ساخت تیم
                 </Button>
               )}
-              {/* {teamInfo?.name && (
+              {teamInfo?.name && (
                 <Button
                   type={"error"}
                   onClick={() => {
@@ -131,7 +135,7 @@ function MyTeamInfo() {
                 >
                   خروج از تیم
                 </Button>
-              )} */}
+              )}
               {teamInfo?.users?.map((user) => (
                 <div className="my-team-info__person">
                   <div className="my-team-info__person-col">
@@ -142,7 +146,13 @@ function MyTeamInfo() {
                     {user.persianName + " " + user.persianSurname}
                   </div>
                   <div className="my-team-info__person-col">
-                    ایمیل: {user?.email || ""}
+                    ایمیل: {user?.email || "-"}
+                  </div>
+                  <div className="my-team-info__person-col">
+                    محل تحصیل: {user?.school || "-"}
+                  </div>
+                  <div className="my-team-info__person-col">
+                    رشته: {user?.major || "-"}
                   </div>
                 </div>
               ))}

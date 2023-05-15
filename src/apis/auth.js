@@ -9,9 +9,9 @@ export const login = ({ username, password }) => {
   });
 };
 
-export const forgetPassword = ({ email }) => {
+export const forgetPassword = ({ phone }) => {
   return AxiosInstance.post("/team/auth/forget-password/", {
-    email,
+    phone,
   });
 };
 

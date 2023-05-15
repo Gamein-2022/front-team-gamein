@@ -17,6 +17,7 @@ import {
   isPersian,
 } from "../../utils/formatters";
 import "react-multi-date-picker/styles/layouts/mobile.css";
+import { Helmet } from "react-helmet";
 
 function MyProfile() {
   const [isComplete, setIsComplete] = useState(false);
@@ -115,10 +116,13 @@ function MyProfile() {
 
   return (
     <div className="my-profile">
+      <Helmet>
+        <title>پروفایل من</title>
+      </Helmet>
       {pageLoading && <GameinLoading size={32} />}
       {!pageLoading && (
         <>
-          <div
+          {/* <div
             style={{
               textAlign: "center",
               color: "#A8262B",
@@ -130,7 +134,7 @@ function MyProfile() {
             زمان تیم‌کشی به پایان رسیده.
             <br />
             با هم‌تیمی‌های خود ارتباط بگیرید.
-          </div>
+          </div> */}
           <div className="my-profile__title">مشاهده پروفایل</div>
           {!isComplete && (
             <div className="my-profile__not-complete">
@@ -148,7 +152,6 @@ function MyProfile() {
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
-              disabled
             />
             <Input
               label="نام فارسی:"
@@ -162,8 +165,7 @@ function MyProfile() {
                   setPersianNameError(true);
                 }
               }}
-              // error={isPersian(persianName) ? "" : "فقط حروف فارسی"}
-              disabled
+              error={isPersian(persianName) ? "" : "فقط حروف فارسی"}
             />
             <Input
               label="نام خانوادگی فارسی:"
@@ -177,8 +179,7 @@ function MyProfile() {
                   setPersianSurnameError(true);
                 }
               }}
-              // error={isPersian(persianSurname) ? "" : "فقط حروف فارسی"}
-              disabled
+              error={isPersian(persianSurname) ? "" : "فقط حروف فارسی"}
             />
             <Input
               label="نام انگلیسی:"
@@ -192,8 +193,7 @@ function MyProfile() {
                   setEngilshNameError(true);
                 }
               }}
-              // error={isEnglish(englishName) ? "" : "فقط حروف انگلیسی"}
-              disabled
+              error={isEnglish(englishName) ? "" : "فقط حروف انگلیسی"}
             />
             <Input
               label="نام خانوادگی انگلیسی:"
@@ -207,8 +207,7 @@ function MyProfile() {
                   setEnglishSurnameError(true);
                 }
               }}
-              // error={isEnglish(englishSurname) ? "" : "فقط حروف انگلیسی"}
-              disabled
+              error={isEnglish(englishSurname) ? "" : "فقط حروف انگلیسی"}
             />
             <div style={{ margin: "16px 0" }}>
               <div>جنسیت:</div>
@@ -219,7 +218,6 @@ function MyProfile() {
                 }}
                 style={{ margin: "4px 0", minWidth: "50%" }}
                 displayEmpty
-                disabled
               >
                 <MenuItem value={""} disabled>
                   جنسیت
@@ -239,7 +237,6 @@ function MyProfile() {
                 placeholder="مقطع تحصیلی"
                 style={{ margin: "4px 0", minWidth: "50%" }}
                 displayEmpty
-                disabled
               >
                 <MenuItem value={""} disabled>
                   مقطع تحصیلی
@@ -261,7 +258,6 @@ function MyProfile() {
                 placeholder="رشته تحصیلی"
                 style={{ margin: "4px 0", minWidth: "50%" }}
                 displayEmpty
-                disabled
               >
                 <MenuItem value={""} disabled>
                   رشته تحصیلی
@@ -284,7 +280,6 @@ function MyProfile() {
                 placeholder="محل تحصیل"
                 style={{ margin: "4px 0", minWidth: "50%" }}
                 displayEmpty
-                disabled
               >
                 <MenuItem value={""} disabled>
                   محل تحصیل
@@ -307,7 +302,6 @@ function MyProfile() {
               onChange={(e) => {
                 setYearOfEntrance(e.target.value);
               }}
-              disabled
             />
             <div style={{ margin: "16px 0" }}>
               <div>استان: </div>
@@ -319,7 +313,6 @@ function MyProfile() {
                 placeholder="استان"
                 style={{ margin: "4px 0", minWidth: "50%" }}
                 displayEmpty
-                disabled
               >
                 <MenuItem value={""} disabled>
                   استان
@@ -338,7 +331,6 @@ function MyProfile() {
               onChange={(e) => {
                 setCity(e.target.value);
               }}
-              disabled
             />
             <Input
               label="تاریخ تولد:"
@@ -349,7 +341,6 @@ function MyProfile() {
               type="text"
               id="start-date"
               value={dob ? dob.toString() : ""}
-              disabled
             />
             <DatePicker
               ref={startDatePickerRef}
@@ -371,7 +362,6 @@ function MyProfile() {
                 placeholder="مقطع تحصیلی"
                 displayEmpty
                 style={{ margin: "4px 0", minWidth: "50%" }}
-                disabled
               >
                 <MenuItem value={""} disabled>
                   نحوه آشنایی با گیمین

@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 import { forgetPassword, resetPassword } from "../../apis/auth";
 import { toast } from "react-toastify";
 import "./style.scss";
+import { convertNumberToEnglish } from "../../utils/formatters";
 
 function ForgetPassword() {
   const [username, setUsername] = useState("");
@@ -26,11 +27,11 @@ function ForgetPassword() {
   const handleForgetSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    forgetPassword({ email: username })
+    forgetPassword({ phone: convertNumberToEnglish(username) })
       .then(() => {
         setStep("submit-code");
         toast.success(
-          "اگر ایمیل شما در سامانه موجود باشد، کد فراموشی برای شما ارسال می‌گردد."
+          "اگر شماره موبایل شما در سامانه موجود باشد، کد فراموشی برای شما ارسال می‌گردد."
         );
       })
       .catch(() => {
@@ -81,7 +82,7 @@ function ForgetPassword() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="forget-password__input"
-              placeholder="ایمیل"
+              placeholder="شماره موبایل"
             />
             <div
               className="forget-password__forget-password"
@@ -124,7 +125,7 @@ function ForgetPassword() {
               className="forget-password__forget-password"
               onClick={() => setStep("forget-password")}
             >
-              تغییر ایمیل
+              تغییر شماره موبایل
             </div>
             <Button
               disabled={loading}

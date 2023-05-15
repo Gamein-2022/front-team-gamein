@@ -5,6 +5,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { toast } from "react-toastify";
 import GameinLoading from "../../components/GameinLoading";
+import { Helmet } from "react-helmet";
 
 function Search() {
   const [users, setUsers] = useState([]);
@@ -53,15 +54,21 @@ function Search() {
     setActiveUsers(
       users.filter(
         (item) =>
-          String(item.persianName + " " + item.persianSurname).toLowerCase().includes(
-            String(searchValue).toLowerCase()
-          ) || String(item.username).toLowerCase().includes(String(searchValue).toLowerCase())
+          String(item.persianName + " " + item.persianSurname)
+            .toLowerCase()
+            .includes(String(searchValue).toLowerCase()) ||
+          String(item.username)
+            .toLowerCase()
+            .includes(String(searchValue).toLowerCase())
       )
     );
   };
 
   return (
     <div className="search">
+      <Helmet>
+        <title>جستجوی بازیکن‌ها</title>
+      </Helmet>
       {pageLoading && <GameinLoading size={32} />}
       {!pageLoading && (
         <>
@@ -84,16 +91,20 @@ function Search() {
                       <tr className="search-table__head">
                         <th>نام کاربری</th>
                         <th>نام و نام خانوادگی</th>
+                        <th>محل تحصیل</th>
+                        <th>رشته</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
                       {activeUsers.map((user) => (
                         <tr className="search-table__row">
-                          <th>{user.username}</th>
-                          <th>
+                          <td>{user.username}</td>
+                          <td>
                             {user.persianName + " " + user.persianSurname}
-                          </th>
+                          </td>
+                          <td>{user.school || "-"}</td>
+                          <td>{user.major || "-"}</td>
                           <td>
                             <Button
                               onClick={() => handleSendInvitation(user.id)}

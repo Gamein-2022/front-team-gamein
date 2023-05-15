@@ -12,6 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import { toast } from "react-toastify";
 import GameinLoading from "../../components/GameinLoading";
+import { Helmet } from "react-helmet";
 
 function TeamRequests() {
   const [otherOffers, setOtherOffers] = useState([]);
@@ -116,6 +117,9 @@ function TeamRequests() {
 
   return (
     <div className="team-requests">
+      <Helmet>
+        <title> درخواست‌های هم‌تیمی شدن</title>
+      </Helmet>
       {pageLoading[0] || pageLoading[1] ? (
         <GameinLoading size={32} />
       ) : (
