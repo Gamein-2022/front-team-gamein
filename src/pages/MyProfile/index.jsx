@@ -377,7 +377,7 @@ function MyProfile() {
                 <MenuItem value={"OTHER"}>سایر</MenuItem>
               </Select>
             </div>
-            {/* <Button
+            <Button
               disabled={
                 persianNameError ||
                 persianSurnameError ||
@@ -388,7 +388,7 @@ function MyProfile() {
               onClick={submitInfo}
             >
               ویرایش اطلاعات
-            </Button> */}
+            </Button>
           </div>
         </>
       )}
