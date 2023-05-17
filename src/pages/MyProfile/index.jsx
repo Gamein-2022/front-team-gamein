@@ -167,7 +167,7 @@ function MyProfile() {
                 }
               }}
               error={isPersian(persianName) ? "" : "فقط حروف فارسی"}
-              // disabled
+              disabled
             />
             <Input
               label="نام خانوادگی فارسی:"
@@ -400,7 +400,7 @@ function MyProfile() {
               //   loading
               // }
               onClick={submitInfo}
-              // disabled
+              disabled
             >
               ویرایش اطلاعات
             </Button>
