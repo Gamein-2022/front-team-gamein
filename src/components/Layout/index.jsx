@@ -57,7 +57,7 @@ const Layout = () => {
                 >
                   اطلاعات تیم من
                 </NavLink>
-                <NavLink
+                {/* <NavLink
                   className={({ isActive }) =>
                     classNames("layout__right-item", {
                       "layout__right-item--active": isActive,
@@ -67,8 +67,8 @@ const Layout = () => {
                   style={{ zIndex: 3 }}
                 >
                   جستجوی بازیکن‌ها
-                </NavLink>
-                <NavLink
+                </NavLink> */}
+                {/* <NavLink
                   className={({ isActive }) =>
                     classNames("layout__right-item", {
                       "layout__right-item--active": isActive,
@@ -78,7 +78,7 @@ const Layout = () => {
                   style={{ zIndex: 2 }}
                 >
                   درخواست‌های هم‌تیمی شدن
-                </NavLink>
+                </NavLink> */}
                 <div
                   className={"layout__right-item"}
                   onClick={() => {

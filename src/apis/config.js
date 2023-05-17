@@ -24,4 +24,17 @@ AxiosInstance.interceptors.request.use(
   }
 );
 
+AxiosInstance.interceptors.response.use(
+  (response) => response,
+  function (error) {
+    const status = error.response ? error.response.status : null;
+    if (status === 401) {
+      window.location.href = "/login";
+      localStorage.removeItem("token");
+      return;
+    }
+    return Promise.reject(error);
+  }
+);
+
 export default AxiosInstance;

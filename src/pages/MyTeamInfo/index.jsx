@@ -11,7 +11,7 @@ function MyTeamInfo() {
   const [teamName, setTeamName] = useState("");
   const [teamInfo, setTeamInfo] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
+  // const [isComplete, setIsComplete] = useState(false);
   const [pageLoading, setPageLoading] = useState(false);
 
   const updateTeamInfo = () => {
@@ -20,11 +20,11 @@ function MyTeamInfo() {
       .then((res) => {
         setTeamInfo(res?.data?.result);
         setTeamName(res?.data?.result?.name);
-        setIsComplete(true);
+        // setIsComplete(true);
       })
       .catch((e) => {
         if (e.response?.status === 400) {
-          setIsComplete(false);
+          // setIsComplete(false);
         }
         toast.error(
           e?.response?.data?.message || "مشکلی در سامانه رخ داده است!"
@@ -40,11 +40,11 @@ function MyTeamInfo() {
       .then((res) => {
         setTeamInfo(res.data.result);
         setTeamName(res.data.result.name);
-        setIsComplete(true);
+        // setIsComplete(true);
       })
       .catch((e) => {
         if (e.response?.status === 400) {
-          setIsComplete(false);
+          // setIsComplete(false);
         }
         toast.error(
           e?.response?.data?.message || "مشکلی در سامانه رخ داده است!"
@@ -63,9 +63,9 @@ function MyTeamInfo() {
       {pageLoading && <GameinLoading size={32} />}
       {!pageLoading && (
         <>
-          {isComplete && (
+          {true && (
             <>
-              {/* <div
+              <div
                 style={{
                   textAlign: "center",
                   color: "#A8262B",
@@ -77,7 +77,7 @@ function MyTeamInfo() {
                 زمان تیم‌کشی به پایان رسیده.
                 <br />
                 با هم‌تیمی‌های خود ارتباط بگیرید.
-              </div> */}
+              </div>
 
               <div style={{ maxWidth: 480 }}>
                 <div className="my-team-info__title">اطلاعات تیم من</div>
@@ -88,7 +88,8 @@ function MyTeamInfo() {
                   onChange={(e) => {
                     setTeamName(e.target.value);
                   }}
-                  disabled={teamInfo?.name}
+                  // disabled={teamInfo?.name}
+                  disabled
                 />
               </div>
               {!teamInfo?.name && (
@@ -111,6 +112,7 @@ function MyTeamInfo() {
                         setLoading(false);
                       });
                   }}
+                  disabled
                 >
                   ساخت تیم
                 </Button>
@@ -132,6 +134,7 @@ function MyTeamInfo() {
                       })
                       .finally(() => {});
                   }}
+                  disabled
                 >
                   خروج از تیم
                 </Button>
@@ -165,11 +168,11 @@ function MyTeamInfo() {
                 ))}
             </>
           )}
-          {!isComplete && (
+          {/* {!isComplete && (
             <div style={{ textAlign: "center" }}>
               برای ادامه‌ی کار ابتدا پروفایل خود را تکمیل کنید.
             </div>
-          )}
+          )} */}
         </>
       )}
     </div>
